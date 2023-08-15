@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['blog-appish-e594a7bc40b2.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['https://blog-appish-e594a7bc40b2.herokuapp.com/', 'localhost']
 
 
 # Application definition
