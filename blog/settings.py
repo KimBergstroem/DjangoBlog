@@ -30,6 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = ["blog-appish-e594a7bc40b2.herokuapp.com", "localhost", '8000-kimbergstroe-djangoblog-306ml80ttye.ws-eu104.gitpod.io']
 
 
