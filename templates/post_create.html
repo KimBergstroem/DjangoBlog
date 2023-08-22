@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+<title>{% block title %} Create Post {% endblock %}</title>
+
+{% block content %}
+{% if user.is_authenticated %}
+<br><br>
+
+    <div class="container mt-5 mb-5">
+        <h1 class="mb-4">Create Post</h1>
+        <form method="post" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class=" mt-4 btn btn-secondary">Submit</button>
+        </form>
+    </div>
+
+{% else %}
+
+You have to <a href="{% url 'account_login' %}">log in</a> to use this feature.
+
+{% endif %}
+{% endblock %}

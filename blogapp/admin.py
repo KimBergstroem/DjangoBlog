@@ -9,8 +9,11 @@ class PostAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']
     list_filter = ('status', 'created_on')
-    prepopulated_fields = {'slug': ('title',)}  # Automatically populate the slug based on the title
-    summernote_fields = ('content',)  # Enable Summernote rich text editing for the 'content' field
+    # Automatically populate the slug based on the title
+    prepopulated_fields = {'slug': ('title',)}
+    # Enable Summernote rich text editing for the 'content' field
+    summernote_fields = ('content',)
+
 
 # Register the Comment model with a regular admin.ModelAdmin
 @admin.register(Comment)

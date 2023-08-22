@@ -1,5 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic.edit import (
+    CreateView
+    )
+from django.urls import reverse_lazy
+from django.utils.text import slugify
 from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm
@@ -72,5 +78,16 @@ class PostLike(View):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
-        
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostCreateView(CreateView):
+    # Create a blog post view
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.pk
+        form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
+    model = Post
+    template_name = 'post_create.html'
+    fields = ['title', 'featured_image', 'excerpt', 'content']
+    success_url = '/'
