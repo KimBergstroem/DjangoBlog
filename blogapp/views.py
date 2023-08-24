@@ -4,6 +4,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import (
     CreateView
     )
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.http import HttpResponseRedirect
@@ -91,3 +92,7 @@ class PostCreateView(CreateView):
     template_name = 'post_create.html'
     fields = ['title', 'featured_image', 'excerpt', 'content']
     success_url = '/'
+
+
+def profile_view(request):
+    return render(request, 'post_profile.html')

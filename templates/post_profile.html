@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+<title>{% block title %} Create Post {% endblock %}</title>
+
+{% block content %}
+{% if user.is_authenticated %}
+<br><br>
+
+    <div class="container mt-5 mb-5">
+        <h1 class="mb-4">Profile Page</h1>
+            <p>More information is coming soon</p>
+    </div>
+
+{% else %}
+
+You have to <a href="{% url 'account_login' %}">log in</a> to use this feature.
+
+{% endif %}
+{% endblock %}
