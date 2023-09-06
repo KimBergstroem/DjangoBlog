@@ -13,8 +13,9 @@ urlpatterns = [
     path('post_profile/', profile_view, name='post_profile'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
+    path('newsletter/', views.NewsLetter, name='NewsLetter'),
+    path('validate/', views.validate_email, name='validate_email'),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
